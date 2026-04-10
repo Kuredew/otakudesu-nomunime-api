@@ -1,22 +1,6 @@
 {
-  "name": "web-scrapper-tests",
+  "name": "otakudesu-nomunime-api",
   "module": "index.ts",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "start": "bun run src/index.ts",
-    "dev": "bun --watch src/index.ts"
-  },
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/bun": "latest",
-    "eslint": "^10.2.0",
-    "globals": "^17.4.0",
-    "typescript-eslint": "^8.58.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
   "dependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
@@ -26,5 +10,20 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "morgan": "^1.10.1"
-  }
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/bun": "latest",
+    "esbuild": "^0.28.0",
+    "eslint": "^10.2.0",
+    "globals": "^17.4.0",
+    "typescript-eslint": "^8.58.0"
+  },
+  "private": true,
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "dev": "bun --watch src/index.ts",
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --outfile=dist/index.cjs"
+  },
+  "type": "module"
 }
