@@ -5,7 +5,10 @@ import axios from "axios";
 import * as cheerio from 'cheerio';
 
 export async function scrapHomeAnimes(): Promise<AnimeList> {
-  const { data } = await axios.get(BASE_URL ? `https://grips.burrohmanhabib35.workers.dev/?url=${BASE_URL}` : '', {
+  const finalUrl = `https://videoproxy.burrohmanhabib35.workers.dev/proxyGet?url=${BASE_URL}` 
+
+  console.log(`fetching ${finalUrl}`)
+  const { data } = await axios.get(BASE_URL ? finalUrl : '', {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
       'Referer': 'https://otakudesu.blog/',
