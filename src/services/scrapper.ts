@@ -5,7 +5,13 @@ import axios from "axios";
 import * as cheerio from 'cheerio';
 
 export async function scrapHomeAnimes(): Promise<AnimeList> {
-  const { data } = await axios.get(BASE_URL ? BASE_URL : '')
+  const { data } = await axios.get(BASE_URL ? BASE_URL : '', {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+      'Referer': 'https://otakudesu.blog/',
+      'Accept-Language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
+    }
+  })
   
   const $ = cheerio.load(data)
   const animeList : AnimeList = {
