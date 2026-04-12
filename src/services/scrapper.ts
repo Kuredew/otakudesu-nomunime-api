@@ -5,15 +5,20 @@ import axios from "axios";
 import * as cheerio from 'cheerio';
 
 export async function scrapHomeAnimes(): Promise<AnimeList> {
-  const finalUrl = `https://videoproxy.burrohmanhabib35.workers.dev/proxyGet?url=${BASE_URL}` 
+  // const finalUrl = `https://videoproxy.burrohmanhabib35.workers.dev/proxyGet?url=${BASE_URL}` 
 
-  console.log(`fetching ${finalUrl}`)
-  const { data } = await axios.get(BASE_URL ? finalUrl : '', {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-      'Referer': 'https://otakudesu.blog/',
-      'Accept-Language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
+  console.log(`fetching ${BASE_URL}`)
+  const { data } = await axios.get(BASE_URL ? BASE_URL : '', {
+    proxy: {
+      protocol: 'http',
+      host: '103.189.250.47',
+      port: 8080,
     }
+    // headers: {
+    //   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+    //   'Referer': 'https://otakudesu.blog/',
+    //   'Accept-Language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
+    // }
   })
   
   const $ = cheerio.load(data)
